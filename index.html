@@ -1231,39 +1231,6 @@
 
 
 
-    // light to dark theme
-
-    let moon = document.getElementById("moon");
-    let body1 = document.querySelector("body");
-    let dark = true;
-    let footer = document.getElementById("footer");
-    let nav = document.getElementById("nav");
-    let ul = document.getElementById("ul");
-
-    moon.addEventListener("click", function() {
-        if (dark) {
-            body1.style.background = "#222";
-            body1.style.color = "white";
-            tabcontent.style.background = "#222";
-            tabcontent.style.color = "#fff";
-            footer.style.background = "black";
-            nav.style.background = "black";
-            ul.style.color = "#fff";
-            // nav.style.background="#fff";
-            ul.style.color = "white";
-
-            dark = false;
-        } else {
-            body1.style.background = "white";
-            body1.style.color = "black";
-            tabcontent.style.background = "#fff";
-            footer.style.background = "#222";
-            nav.style.background = "#fff";
-            dark = true;
-
-        }
-
-    })
 
 
 
