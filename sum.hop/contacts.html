@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts</title>
+    <script src="https://kit.fontawesome.com/f7169cb9df.js" crossorigin="anonymous"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        transition: .5s ease;
+        list-style: none;
+        text-decoration: none;
+    }
+    
+    .timeout {
+        /* display: none; */
+    }
+    /* nav-part */
+    
+    nav {
+        height: 200px;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 50px;
+        background-color: #f5f5f5;
+        /* display: none; */
+        position: fixed;
+    }
+    
+    .logo {
+        font-size: 40px;
+        font-family: sans-serif;
+        font-weight: 900;
+        color: rgb(63, 114, 63);
+    }
+    
+    .content {
+        /* display: none; */
+    }
+    
+    .content ul {
+        font-size: 50px;
+        font-family: sans-serif;
+        font-weight: 100;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .content ul li {
+        margin-left: 80px;
+    }
+    
+    .content ul li:hover {
+        transform: rotateX(360deg);
+        cursor: pointer;
+    }
+    
+    .content ul li button {
+        height: 150px;
+        width: 300px;
+        border: none;
+        font-size: 50px;
+        font-family: sans-serif;
+        border: 2px solid rgb(216, 96, 53);
+        position: relative;
+        background: transparent;
+    }
+    
+    .content ul li button:hover {
+        background-color: rgb(216, 96, 53);
+        border: 2px solid white;
+        color: white;
+    }
+    /* tab */
+    
+    .tab {
+        font-size: 50px;
+        font-family: sans-serif;
+        color: rgb(174, 162, 162);
+        position: absolute;
+        top: 12%;
+        left: 90%;
+        transform: translate(-50%, -50%);
+        display: none;
+    }
+    /* @media screen and (max-width: 100px) */
+    
+    @media screen and (max-width:2000px) {
+        .content {
+            display: none;
+        }
+        nav {
+            width: 100%;
+            position: fixed;
+            background-color: #f5f5f5;
+            /* overflow: hidden; */
+            padding: 10px;
+            height: 10%;
+        }
+        nav .logo {
+            font-size: 20px;
+            position: absolute;
+            left: 0;
+            color: rgb(216, 96, 53);
+        }
+        .tab {
+            display: block;
+            cursor: pointer;
+            position: fixed;
+            top: 5%;
+        }
+        .tab-cross {
+            top: 5%;
+        }
+    }
+    /* tab-content */
+    
+    .tab-content {
+        height: 100vh;
+        width: 100vw;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        position: fixed;
+        display: none;
+        background-color: #fff;
+    }
+    
+    .tab-content ul {
+        font-size: 30px;
+        font-family: sans-serif;
+        font-weight: 900;
+    }
+    
+    .tab-content ul li {
+        padding: 30px;
+        margin-top: 10px;
+        color: rgb(70, 61, 61);
+    }
+    /* tab-cross */
+    
+    .tab-cross {
+        position: absolute;
+        top: 1.2%;
+        left: 87.4%;
+        font-size: 50px;
+        font-family: sans-serif;
+        color: rgb(139, 128, 128);
+        display: none;
+        position: fixed;
+    }
+    /* contact */
+    
+    .contact {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-top: 500px;
+    }
+    
+    .contact .textarea h1 {
+        font-size: 150px;
+        font-family: sans-serif;
+        font-weight: 900;
+    }
+    
+    .contact .textarea ul {
+        margin-top: 50px;
+        padding: 10px;
+    }
+    
+    .contact .textarea li {
+        font-size: 50px;
+        font-family: sans-serif;
+        font-weight: 100;
+        line-height: 100px;
+    }
+    
+    .contact .map {
+        height: 50vh;
+        width: 50vw;
+        font-size: 50px;
+        font-family: sans-serif;
+    }
+    
+    .contact .map iframe {
+        height: 100%;
+        width: 100%;
+    }
+    
+    @media screen and (max-width:2000px) {
+        .contact {
+            margin-top: 50px;
+            flex-wrap: wrap;
+            justify-content: left;
+            padding: 20px;
+            gap: 30px;
+        }
+        .contact .textarea h1 {
+            font-size: 30px;
+        }
+        .contact .textarea ul {
+            margin-top: 30px;
+        }
+        .contact .textarea li {
+            font-size: 20px;
+            line-height: 40px;
+        }
+    }
+    /* reach us */
+    
+    .reach-us {
+        margin-top: 200px;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        gap: 50px;
+    }
+    
+    .reach-us h1 {
+        font-size: 150px;
+        font-family: sans-serif;
+        font-weight: 900;
+    }
+    
+    .reach-us form {
+        height: 100%;
+        width: 50vw;
+        margin-left: 100px;
+    }
+    
+    .reach-us form h1 {
+        font-size: 70px;
+        font-family: sans-serif;
+        font-weight: 100;
+    }
+    
+    .reach-us form p {
+        font-size: 40px;
+        font-family: sans-serif;
+        font-weight: 100;
+    }
+    
+    .reach-us form input {
+        height: 150px;
+        width: 100%;
+    }
+    
+    .reach-us form #btn {
+        height: 250px;
+        width: 500px;
+        border: none;
+        border: 2px solid rgb(216, 96, 53);
+        background-color: transparent;
+        font-size: 50px;
+        font-family: sans-serif;
+        font-weight: 100;
+        border-radius: 100px;
+        margin-top: 200px;
+    }
+    
+    .reach-us form #btn:hover {
+        background-color: rgb(216, 96, 53);
+        border: 2px solid white;
+        color: white;
+    }
+    
+    @media screen and (max-width:2000px) {
+        .reach-us {
+            padding: 30px;
+            margin-top: 200px;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: left;
+            gap: 20px;
+        }
+        .reach-us h1 {
+            font-size: 30px;
+            font-family: sans-serif;
+            font-weight: 900;
+        }
+        .reach-us form {
+            padding: 10px;
+            height: 100%;
+            width: 100%;
+            margin-left: 1px;
+        }
+        .reach-us form h1 {
+            font-size: 20px;
+            font-family: sans-serif;
+            font-weight: 100;
+        }
+        .reach-us form p {
+            font-size: 20px;
+            font-family: sans-serif;
+            font-weight: 100;
+            margin-top: 10px;
+        }
+        .reach-us form input {
+            height: 50px;
+            width: 100%;
+        }
+        .reach-us form #btn {
+            height: 60px;
+            width: 100px;
+            font-size: 20px;
+            margin-top: 100px;
+        }
+    }
+    /* footer */
+    
+    .footer {
+        height: 100%;
+        width: 100%;
+        background-color: #222;
+        color: #fff;
+        font-family: sans-serif;
+        margin-top: 200px;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        padding: 50px;
+    }
+    
+    .footer .reach-us1 {
+        margin-top: 100px;
+        margin-bottom: 100px
+    }
+    
+    .footer .reach-us1 h1 {
+        font-size: 100px;
+        font-weight: 900;
+    }
+    
+    .footer .reach-us1 #footer1 {
+        font-size: 50px;
+        font-weight: 100;
+        margin-top: 50px;
+        line-height: 200px;
+    }
+    
+    .footer .info {
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
+    
+    .footer .info h1 {
+        font-size: 100px;
+        font-weight: 900;
+    }
+    
+    .footer .info #footer2 {
+        font-size: 50px;
+        font-weight: 100;
+        margin-top: 50px;
+        line-height: 200px;
+    }
+    
+    .footer .action {
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
+    
+    .footer .action h1 {
+        font-size: 100px;
+        font-weight: 900;
+    }
+    
+    .footer .action #footer3 {
+        font-size: 50px;
+        font-weight: 100;
+        line-height: 200px;
+        margin-top: 50px;
+    }
+    
+    @media screen and (max-width:2000px) {
+        .footer {
+            padding: 10px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .footer .reach-us1 {
+            padding: 0;
+            margin-top: 10px;
+        }
+        .footer .reach-us1 h1 {
+            font-size: 30px;
+        }
+        .footer .reach-us1 #footer1 {
+            font-size: 15px;
+            line-height: 45px;
+            margin-top: 10px;
+        }
+        .footer .info {
+            margin-top: 10px;
+        }
+        .footer .info h1 {
+            font-size: 30px;
+        }
+        .footer .info #footer2 {
+            font-size: 15px;
+            line-height: 45px;
+            margin-top: 10px;
+        }
+        .footer .action {
+            margin-top: 10px;
+        }
+        .footer .action h1 {
+            font-size: 30px;
+        }
+        .footer .action #footer3 {
+            font-size: 15px;
+            line-height: 45px;
+            margin-top: 10px;
+        }
+    }
+    /* loading animation */
+    
+    .body {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        position: fixed;
+        margin: 0;
+        background-color: #282c34;
+        color: white;
+        font-family: Arial, sans-serif;
+        /* display: none; */
+    }
+    
+    .loader {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        width: 80px;
+        height: 40px;
+    }
+    
+    .dot {
+        width: 16px;
+        height: 16px;
+        background-color: rgb(216, 96, 53);
+        border-radius: 50%;
+        animation: bounce 1.5s infinite ease-in-out;
+    }
+    
+    .dot:nth-child(2) {
+        animation-delay: 0.3s;
+    }
+    
+    .dot:nth-child(3) {
+        animation-delay: 0.6s;
+    }
+    
+    @keyframes bounce {
+        0%,
+        80%,
+        100% {
+            transform: translateY(0);
+        }
+        40% {
+            transform: translateY(-30px);
+        }
+    }
+</style>
+
+<body>
+    <audio id="clickSound" src="https://www.fesliyanstudios.com/play-mp3/8"></audio>
+    <div class="timeout" id="timeout">
+        <nav>
+            <div class="logo">
+                <a href="index.html" style="color:rgb(216, 96, 53);">
+                    <h1 id="h1">SUM Hospital | SOA</h1>
+                </a>
+            </div>
+            <div class="content">
+                <ul>
+                    <a href="about-us.html">
+                        <li>About</li>
+                    </a>
+                    <a href="service&speaciality.html">
+                        <li>Services & Speciality</li>
+                    </a>
+                    <a href="contacts.html">
+                        <li><button>Contact</button></li>
+                    </a>
+                    <li><i class="fas fa-search"></i></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- tab -->
+        <div class="tab">
+            <i class="fa-solid fa-plus" id="tab"></i>
+        </div>
+        <!-- content-when-tab -->
+        <div class="tab-content" id="tabcontent">
+            <ul>
+                <a href="about-us.html">
+                    <a href="about-us.html">
+                        <li>About</li>
+                    </a>
+                </a>
+                <a href="service&speaciality.html">
+                    <li>Services & Speciality</li>
+                </a>
+                <li style="color:rgb(216, 96, 53);">Contact</li>
+                <a href="cart.html">
+                    <li id="li">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </li>
+                </a>
+                <a href="profilesetup.html">
+                    <li style="margin-top: -90px;" id="li">
+                        <li><i class="fa-solid fa-user" id="moon"></i></li>
+                    </li>
+                </a>
+                <a href="SUMai.html">
+                    <li id="li">
+                        <i class="fas fa-search" id="lightTodark"></i>
+                    </li>
+                </a>
+            </ul>
+        </div>
+        <!-- cross -->
+        <div class="tab-cross" id="cross">
+            <i class="fa-sharp fa-solid fa-xmark"></i>
+        </div>
+        <br>
+        <br><br><br>
+
+
+
+        <!-- contact page-map -->
+        <div class="contact">
+            <div class="textarea">
+                <h1>Contact Us</h1>
+                <hr style="margin-top: 30px;">
+                <ul class="ul">
+                    <li>K8, Kalinga Nagar</li>
+                    <li>Bhubaneswar, Odisha, India</li>
+                    <li>Pin Code – 751003M</li>
+                    <li>Call Us: 0674-2386281</li>
+                </ul>
+            </div>
+
+            <div class="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29926.1070615381!2d85.80364220282368!3d20.351391392540684!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a190912b69339ab%3A0xa11e7186a04f1474!2sPatia%2C%20Bhubaneswar%2C%20Odisha!5e0!3m2!1sen!2sin!4v1710600542004!5m2!1sen!2sin"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+
+
+
+        <!-- reach us -->
+        <div class="reach-us">
+            <div class="h1">
+                <h1>Reach Us</h1>
+                <hr style="margin-top: 50px;">
+            </div>
+            <form action="">
+                <h1 style="margin-top: 50px;">Name Required</h1>
+                <div class="name" style="margin-top: 0px;">
+                    <input type="text">
+                </div>
+                <h1 style="margin-top: 30px;">E-mail Required</h1>
+                <div class="mail" style="margin-top: 0px;">
+                    <input type="email" name="" id="">
+                </div>
+                <h1 style="margin-top: 50px;">Subject Required</h1>
+                <div class="sub" style="margin-top: 0px;">
+                    <input type="text" name="" id="">
+                </div>
+                <h1 style="margin-top: 50px;">Leave a message</h1>
+                <div class="message" style="margin-top: 0px;">
+                    <textarea name="" id="" style="max-width: 50vw; max-height: 150px;"></textarea>
+                </div>
+
+                <button id="btn">Submit</button>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+
+    <!-- footer -->
+
+
+    <div class="footer">
+        <div class="reach-us1">
+            <h1>REACH US</h1>
+            <hr>
+            <ul id="footer1">
+                <li>K8, KALINGA NAGAR</li>
+                <li>BHUBANESWAR, ODISHA</li>
+                <li>INDIA</li>
+                <li>PIN CODE – 751003</li>
+
+                <li>CALL US: 0674-2386281</li>
+
+            </ul>
+        </div>
+
+        <div class="info">
+            <h1>INFO</h1>
+            <hr>
+            <ul id="footer2">
+                <li>ABOUT US</li>
+                <li>DEPARTMENTS</li>
+                <li>SERVICES</li>
+                <li>SPECIALITY</li>
+                <li>CONTACT US</li>
+            </ul>
+        </div>
+
+        <div class="action">
+            <h1>ACTION</h1>
+            <hr>
+            <ul id="footer3">
+                <li>CONTACT</li>
+            </ul>
+        </div>
+    </div>
+
+    </div>
+
+
+
+
+    <div class="body" id="body">
+        <div class="loader">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+</body>
+
+</body>
+
+<script>
+    let tab = document.getElementById("tab");
+    let tabcontent = document.getElementById("tabcontent");
+    let cross = document.getElementById("cross");
+    let h1 = document.getElementById("h1");
+    let main = document.getElementById("main");
+    let service = document.getElementById("service");
+
+    tab.addEventListener("click", function() {
+        tabcontent.style.display = "block";
+        tab.style.display = "none";
+        cross.style.display = "block";
+        h1.style.display = "none";
+        service.style.display = "none";
+
+
+    })
+    cross.addEventListener("click", function() {
+        tabcontent.style.display = "none";
+        tab.style.display = "block";
+        cross.style.display = "none";
+        h1.style.display = "block";
+        service.style.display = "block";
+
+    })
+
+
+
+    // loading
+
+    let body = document.getElementById("body");
+    let timeout = document.getElementById("timeout");
+
+
+
+    setInterval(function() {
+        timeout.style.display = "block";
+        body.style.display = "none";
+
+    }, 2000);
+
+
+
+    // click sound
+    tab.addEventListener('click', function() {
+        const clickSound = document.getElementById('clickSound');
+        clickSound.play();
+    });
+
+    cross.addEventListener('click', function() {
+        const clickSound = document.getElementById('clickSound');
+        clickSound.play();
+    });
+</script>
+
+</html>

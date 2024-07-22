@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Account Setup</title>
+    <script src="https://kit.fontawesome.com/f7169cb9df.js" crossorigin="anonymous"></script>
+</head>
+<style>
+    /* styles.css */
+    
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        transition: .5s ease;
+        list-style: none;
+        text-decoration: none;
+    }
+    
+    .timeout {
+        display: none;
+    }
+    /* nav-part */
+    
+    nav {
+        height: 200px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 50px;
+        background-color: #f5f5f5;
+    }
+    
+    .logo {
+        font-size: 40px;
+        font-family: sans-serif;
+        font-weight: 900;
+        color: rgb(63, 114, 63);
+        text-align: center;
+    }
+    
+    .content {
+        /* display: none; */
+    }
+    
+    .content ul {
+        font-size: 50px;
+        font-family: sans-serif;
+        font-weight: 100;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .content ul li {
+        margin-left: 80px;
+    }
+    
+    .content ul li:hover {
+        transform: rotateX(360deg);
+        cursor: pointer;
+    }
+    
+    .content ul li button {
+        height: 150px;
+        width: 300px;
+        border: none;
+        font-size: 50px;
+        font-family: sans-serif;
+        border: 2px solid rgb(216, 96, 53);
+        position: relative;
+        background: transparent;
+    }
+    
+    .content ul li button:hover {
+        background-color: rgb(216, 96, 53);
+        border: 2px solid white;
+        color: white;
+    }
+    /* tab */
+    
+    .tab {
+        font-size: 50px;
+        font-family: sans-serif;
+        color: rgb(174, 162, 162);
+        position: absolute;
+        top: 12%;
+        left: 90%;
+        transform: translate(-50%, -50%);
+        display: none;
+        /* position: fixed; */
+    }
+    /* @media screen and (max-width: 100px) */
+    
+    @media screen and (max-width:2000px) {
+        .content {
+            display: none;
+        }
+        nav {
+            width: 100%;
+            position: fixed;
+            background-color: rgb(221, 215, 215);
+            /* overflow: hidden; */
+            padding: 10px;
+            height: 10%;
+        }
+        nav .logo {
+            font-size: 20px;
+            position: absolute;
+            text-align: center;
+            color: rgb(216, 96, 53);
+        }
+        .tab {
+            display: block;
+            cursor: pointer;
+            position: fixed;
+            top: 5%;
+        }
+        .tab-cross {
+            top: 5%;
+            /* left: -10%; */
+        }
+    }
+    /* tab-content */
+    
+    .tab-content {
+        height: 100vh;
+        width: 100vw;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        position: fixed;
+        display: none;
+        background-color: #fff;
+    }
+    
+    .tab-content ul {
+        font-size: 30px;
+        font-family: sans-serif;
+        font-weight: 900;
+    }
+    
+    .tab-content ul li {
+        padding: 30px;
+        margin-top: 10px;
+        color: rgb(70, 61, 61);
+    }
+    /* tab-cross */
+    
+    .tab-cross {
+        position: absolute;
+        top: 1.2%;
+        left: 87.1%;
+        font-size: 50px;
+        font-family: sans-serif;
+        color: rgb(139, 128, 128);
+        display: none;
+        position: fixed;
+    }
+    
+    body {
+        font-family: Arial, sans-serif;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+    }
+    
+    .container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    
+    h2,
+    h3 {
+        margin-bottom: 20px;
+    }
+    
+    .input-group {
+        margin-bottom: 15px;
+        text-align: left;
+    }
+    
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="file"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    
+    button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        background-color: orange;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    
+    .hidden {
+        display: none;
+    }
+    
+    #outputImage {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-top: 10px;
+    }
+</style>
+
+<body>
+    <nav id="nav">
+        <div class="logo" style="text-align: center;">
+            <a href="index.html" style="color: rgb(216, 96, 53);">
+                <h1>SUM Hospital | SOA</h1>
+            </a>
+        </div>
+    </nav>
+    <!-- <br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br>
+-->
+    <div class="container" id="cont">
+        <h2>Set Up Your Profile</h2>
+        <form id="profileForm">
+            <div class="input-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="input-group">
+                <label for="phone">No :</label>
+                <input type="number" id="no" name="no" required>
+            </div>
+            <div class="input-group">
+                <label for="profilePicture">Profile Picture:</label>
+                <input type="file" id="profilePicture" name="profilePicture" accept="image/*" required>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="profileOutput" class="hidden">
+            <h3>Your Profile</h3>
+            <p id="outputName"></p>
+            <p id="outputEmail"></p>
+            <img id="outputImage" alt="Profile Picture">
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+<script>
+    // script.js
+
+    document.getElementById('profileForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const no = document.getElementById("no").value
+        const profilePicture = document.getElementById('profilePicture').files[0];
+
+        const reader = new FileReader();
+        reader.onloadend = function() {
+            // Store form data
+            const profileData = {
+                name: name,
+                email: email,
+                no: no,
+                image: reader.result
+            };
+
+            // Hide form after submission
+            setTimeout(() => {
+                document.getElementById('profileForm').classList.add('hidden');
+                displayProfile(profileData);
+            }, 2000);
+        };
+
+        if (profilePicture) {
+            reader.readAsDataURL(profilePicture);
+        }
+    });
+
+    function displayProfile(profileData) {
+        document.getElementById('outputName').textContent = `Name: ${profileData.name}`;
+        document.getElementById('outputEmail').textContent = `Email: ${profileData.email}`;
+        document.getElementById("no").textContent = `Phone No : ${profileData.no}`;
+        document.getElementById('outputImage').src = profileData.image;
+        document.getElementById('profileOutput').classList.remove('hidden');
+    }
+</script>
+
+</html>

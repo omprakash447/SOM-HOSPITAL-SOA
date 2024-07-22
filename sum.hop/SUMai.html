@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum hospital ai</title>
+    <script src="https://kit.fontawesome.com/f7169cb9df.js" crossorigin="anonymous"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        transition: .5s ease;
+        list-style: none;
+        text-decoration: none;
+    }
+    /* body */
+    
+    body {
+        height: 100vh;
+        width: 100vw;
+        background-color: rgb(216, 96, 53);
+    }
+    /* nav-part */
+    
+    nav {
+        height: 200px;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 50px;
+        background-color: #f5f5f5;
+        position: fixed;
+    }
+    
+    .logo {
+        font-size: 40px;
+        font-family: sans-serif;
+        font-weight: 900;
+        color: rgb(63, 114, 63);
+    }
+    
+    .content {
+        /* display: none; */
+    }
+    
+    .content ul {
+        font-size: 50px;
+        font-family: sans-serif;
+        font-weight: 100;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .content ul li {
+        margin-left: 80px;
+    }
+    
+    .content ul li:hover {
+        transform: rotateX(360deg);
+        cursor: pointer;
+    }
+    
+    .content ul li button {
+        height: 150px;
+        width: 300px;
+        border: none;
+        font-size: 50px;
+        font-family: sans-serif;
+        border: 2px solid rgb(216, 96, 53);
+        position: relative;
+        background: transparent;
+    }
+    
+    .content ul li button:hover {
+        background-color: rgb(216, 96, 53);
+        border: 2px solid white;
+        color: white;
+    }
+    /* tab */
+    
+    .tab {
+        font-size: 50px;
+        font-family: sans-serif;
+        color: rgb(174, 162, 162);
+        position: absolute;
+        top: 12%;
+        left: 90%;
+        transform: translate(-50%, -50%);
+        display: none;
+    }
+    
+    @media screen and (max-width:2000px) {
+        .content {
+            display: none;
+        }
+        nav {
+            width: 100%;
+            position: fixed;
+            background-color: #f5f5f5;
+            padding: 10px;
+            height: 10%;
+        }
+        nav .logo {
+            font-size: 20px;
+            position: absolute;
+            left: 0;
+            color: rgb(216, 96, 53);
+        }
+        .tab {
+            display: block;
+            cursor: pointer;
+            position: fixed;
+            top: 5%;
+        }
+        .tab-cross {
+            top: 5%;
+        }
+    }
+    /* tab-content */
+    
+    .tab-content {
+        height: 100vh;
+        width: 100vw;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        position: fixed;
+        display: none;
+        background-color: #fff;
+    }
+    
+    .tab-content ul {
+        font-size: 30px;
+        font-family: sans-serif;
+        font-weight: 900;
+    }
+    
+    .tab-content ul li {
+        padding: 30px;
+        margin-top: 10px;
+        color: rgb(70, 61, 61);
+    }
+    /* tab-cross */
+    
+    .tab-cross {
+        position: absolute;
+        top: 1.2%;
+        left: 87.3%;
+        font-size: 50px;
+        font-family: sans-serif;
+        color: rgb(139, 128, 128);
+        display: none;
+        position: fixed;
+    }
+    /* footer */
+    
+    .footer {
+        height: 100%;
+        width: 100%;
+        background-color: #222;
+        color: #fff;
+        font-family: sans-serif;
+        margin-top: 200px;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        padding: 50px;
+        position: absolute;
+        top: 100%;
+        margin-top: 500px;
+        z-index: -1;
+    }
+    
+    .footer .reach-us1 {
+        margin-top: 100px;
+        margin-bottom: 100px
+    }
+    
+    .footer .reach-us1 h1 {
+        font-size: 100px;
+        font-weight: 900;
+    }
+    
+    .footer .reach-us1 #footer1 {
+        font-size: 50px;
+        font-weight: 100;
+        margin-top: 50px;
+        line-height: 200px;
+    }
+    
+    .footer .info {
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
+    
+    .footer .info h1 {
+        font-size: 100px;
+        font-weight: 900;
+    }
+    
+    .footer .info #footer2 {
+        font-size: 50px;
+        font-weight: 100;
+        margin-top: 50px;
+        line-height: 200px;
+    }
+    
+    .footer .action {
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
+    
+    .footer .action h1 {
+        font-size: 100px;
+        font-weight: 900;
+    }
+    
+    .footer .action #footer3 {
+        font-size: 50px;
+        font-weight: 100;
+        line-height: 200px;
+    }
+    
+    @media screen and (max-width:2000px) {
+        .footer {
+            padding: 10px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 50px;
+        }
+        .footer .reach-us1 {
+            padding: 0;
+            margin-top: 10px;
+        }
+        .footer .reach-us1 h1 {
+            font-size: 30px;
+        }
+        .footer .reach-us1 #footer1 {
+            font-size: 15px;
+            line-height: 45px;
+            margin-top: 10px;
+        }
+        .footer .info {
+            margin-top: 10px;
+        }
+        .footer .info h1 {
+            font-size: 30px;
+        }
+        .footer .info #footer2 {
+            font-size: 15px;
+            line-height: 45px;
+            margin-top: 10px;
+        }
+        .footer .action {
+            margin-top: -100px;
+        }
+        .footer .action h1 {
+            font-size: 30px;
+        }
+        .footer .action #footer3 {
+            font-size: 15px;
+            line-height: 45px;
+            margin-top: 10px;
+        }
+    }
+    /* aiarea */
+    
+    .mainarea {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .aiarea {
+        height: 400px;
+        width: 500px;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 20px;
+    }
+    
+    .aiarea h1 {
+        font-size: 40px;
+        font-family: sans-serif;
+        font-weight: 900;
+        color: rgb(216, 96, 53);
+        text-align: center;
+    }
+    
+    .aiarea p {
+        font-size: 20px;
+        font-family: sans-serif;
+        font-weight: 100;
+        margin: 20px;
+        text-align: center;
+        background-color: rgb(216, 96, 53);
+        color: white;
+        padding: 20px;
+        border-radius: 20px;
+    }
+    
+    .aiarea .inputs {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin-top: 50px;
+    }
+    
+    .aiarea .inputs input {
+        height: 50px;
+        width: 300px;
+        border-radius: 20px;
+        border: none;
+        border: 2px solid rgb(216, 96, 53);
+        font-size: 20px;
+        font-family: sans-serif;
+        font-weight: 100;
+    }
+    
+    .aiarea .inputs input::-webkit-input-placeholder {
+        font-size: 25px;
+        font-family: sans-serif;
+        font-weight: 100;
+    }
+    
+    .aiarea .inputs button {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+    }
+    
+    .aiarea .inputs i {
+        font-size: 40px;
+        color: rgb(216, 96, 53);
+    }
+</style>
+
+
+<body>
+    <audio id="clickSound" src="https://www.fesliyanstudios.com/play-mp3/8"></audio>
+    <div>
+        <nav>
+            <div class="logo">
+                <a href="index.html" style="color:rgb(216, 96, 53);">
+                    <h1 id="h1">SUM Hospital | SOA</h1>
+                </a>
+            </div>
+            <div class="content">
+                <ul>
+                    <a href="about-us.html">
+                        <li>About</li>
+                    </a>
+                    <a href="service&speaciality.html">
+                        <li>Services & Speciality</li>
+                    </a>
+                    <a href="contacts.html">
+                        <li><button>Contact</button></li>
+                    </a>
+                    <li><i class="fas fa-search"></i></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- tab -->
+        <div class="tab">
+            <i class="fa-solid fa-plus" id="tab"></i>
+        </div>
+        <!-- content-when-tab -->
+        <div class="tab-content" id="tabcontent">
+            <ul>
+                <a href="about-us.html">
+                    <li>About</li>
+                </a>
+                <a href="service&speaciality.html">
+                    <li>Services & Speciality</li>
+                </a>
+                <a href="contacts.html">
+                    <li style="color:rgb(216, 96, 53);">Contact</li>
+                </a>
+                <a href="cart.html">
+                    <li id="li">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </li>
+                </a>
+            </ul>
+        </div>
+        <!-- cross -->
+        <div class="tab-cross" id="cross">
+            <i class="fa-sharp fa-solid fa-xmark"></i>
+        </div>
+        <br><br><br><br><br><br><br><br><br><br>
+
+
+
+        <!-- ai part -->
+
+        <div class="mainarea">
+            <div class="aiarea">
+                <h1>SUM HOSPITAL || AI</h1>
+                <p>Hi i am SOA HOS's || AI You can easily talk with me... </p>
+                <div class="inputs">
+                    <input type="text" name="" id="input" placeholder="Search here...">
+                    <button id="searchbtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</body>
+<script>
+    let tab = document.getElementById("tab");
+    let tabcontent = document.getElementById("tabcontent");
+    let cross = document.getElementById("cross");
+    let h1 = document.getElementById("h1");
+    let main = document.getElementById("main");
+    let gallery = document.getElementById("gallery");
+    let footer = document.getElementsByClassName("footer");
+
+    tab.addEventListener("click", function() {
+        tabcontent.style.display = "block";
+        tab.style.display = "none";
+        cross.style.display = "block";
+        h1.style.display = "none";
+        footer.style.display = "none";
+
+
+    })
+    cross.addEventListener("click", function() {
+        tabcontent.style.display = "none";
+        tab.style.display = "block";
+        cross.style.display = "none";
+        h1.style.display = "block";
+        footer.style.display = "block";
+
+    })
+
+
+    // soound
+    tab.addEventListener('click', function() {
+        const clickSound = document.getElementById('clickSound');
+        clickSound.play();
+    });
+
+    cross.addEventListener('click', function() {
+        const clickSound = document.getElementById('clickSound');
+        clickSound.play();
+    });
+
+
+    // search
+
+
+
+    let inputs = document.getElementById("input");
+    let buttonsearch = document.getElementById("searchbtn");
+
+
+    buttonsearch.addEventListener("click", function() {
+        window.location.href = `https://www.bing.com/search?q=${inputs.value}`;
+    })
+</script>
